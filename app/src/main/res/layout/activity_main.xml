@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextNome"
+        android:inputType="text"
+        android:digits=" "
+        android:hint="Nome completo"
+        android:layout_below="@+id/generoOpcoes"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="44dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextEmail"
+        android:inputType="textEmailAddress"
+        android:hint="Digite seu email"
+        android:layout_below="@+id/radioButMasculino"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextCPF"
+        android:inputType="number"
+        android:hint="CPF"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/editTextNome" />
+
+    <RadioGroup
+        android:id="@+id/generoOpcoes"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"></RadioGroup>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enviar"
+        android:id="@+id/enviar"
+        android:onClick="enviar"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Masculino"
+        android:id="@+id/radioButMasculino"
+        android:layout_marginEnd="47dp"
+        android:layout_alignTop="@+id/radioButFeminino"
+        android:layout_alignParentEnd="true" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Feminino"
+        android:id="@+id/radioButFeminino"
+        android:checked="false"
+        android:layout_below="@+id/editTextCPF"
+        android:layout_toStartOf="@+id/radioButMasculino" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Gênero:"
+        android:id="@+id/textViewGenero"
+        android:layout_below="@+id/editTextCPF"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/radioButFeminino" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextURL"
+        android:layout_below="@+id/editTextEmail"
+        android:layout_alignParentStart="true"
+        android:hint="Link de site preferido" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberSigned"
+        android:ems="10"
+        android:id="@+id/editTextTelefone"
+        android:hint="Telefone"
+        android:layout_below="@+id/editTextURL"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberSigned"
+        android:ems="10"
+        android:id="@+id/editTextIdade"
+        android:layout_below="@+id/editTextTelefone"
+        android:layout_alignParentStart="true"
+        android:hint="Idade" />
+
+</RelativeLayout>

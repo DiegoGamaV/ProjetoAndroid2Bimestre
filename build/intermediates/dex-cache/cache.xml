@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="D:\java\android\Projetos\ProjetoAndroid2Bimestre\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="0874286cc2fd88d54fdf130e9d5372730da6de97">
+        <dex dex="D:\java\android\Projetos\ProjetoAndroid2Bimestre\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-24.0.0_e915246896cda094cf011c115c316ea183432478\classes.dex" />
+    </item>
+    <item
+        jar="D:\java\android\Projetos\ProjetoAndroid2Bimestre\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="3bd97cfefd783e9de1dd1c30574a6adb44b4409b">
+        <dex dex="D:\java\android\Projetos\ProjetoAndroid2Bimestre\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-24.0.0_5f7ed6d86011b8b2261efe607f21e6ab289d5a99\classes.dex" />
+    </item>
+    <item
+        jar="D:\java\android\Projetos\ProjetoAndroid2Bimestre\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.0.0\jars\libs\internal_impl-24.0.0.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="fcaf463e10e69c1923ccf1edeba3b4196d239e00">
+        <dex dex="D:\java\android\Projetos\ProjetoAndroid2Bimestre\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.0.0_95cbf3fef5781091dd215a5c835d364fa2e375d3\classes.dex" />
+    </item>
+    <item
+        jar="D:\java\android\Projetos\ProjetoAndroid2Bimestre\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="39134b78542c852acc3ccfff00fa2e1f4996e273">
+        <dex dex="D:\java\android\Projetos\ProjetoAndroid2Bimestre\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_7d035fa05ba1f0baedede58d8548b07e4f44de59\classes.dex" />
+    </item>
+    <item
+        jar="D:\java\android\Projetos\ProjetoAndroid2Bimestre\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="2f7e6e2dad1bccaf68a8820820adc6c0d5b96d37">
+        <dex dex="D:\java\android\Projetos\ProjetoAndroid2Bimestre\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-24.0.0_5d4e7bad7f8fb27a987239218837d2dcc75f74ca\classes.dex" />
+    </item>
+    <item
+        jar="D:\java\android\Projetos\ProjetoAndroid2Bimestre\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="e3d0642e77d2a451521194b2755ebdc4578dafb7">
+        <dex dex="D:\java\android\Projetos\ProjetoAndroid2Bimestre\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_52a2e5310f7fece58008002326c7e9337b9af34c\classes.dex" />
+    </item>
+    <item
+        jar="D:\java\android\sdk\android-sdk_r24.4.1-windows\android-sdk-windows\extras\android\m2repository\com\android\support\support-annotations\24.0.0\support-annotations-24.0.0.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="2943c74db6d4346ab8c6531adac91fa05c137c40">
+        <dex dex="D:\java\android\Projetos\ProjetoAndroid2Bimestre\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-24.0.0_64c57dc7dadd8507d93ac8c47973b7cb0a09c5f3\classes.dex" />
+    </item>
+    <item
+        jar="D:\java\android\Projetos\ProjetoAndroid2Bimestre\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="e70f608219ed6b974644c333249ab2bb7b71de98">
+        <dex dex="D:\java\android\Projetos\ProjetoAndroid2Bimestre\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-24.0.0_1310d15e96559f3c0298633e7390f9aade96bbb6\classes.dex" />
+    </item>
+
+</items>
