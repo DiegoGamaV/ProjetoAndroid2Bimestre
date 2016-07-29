@@ -17,7 +17,6 @@ import android.app.*;
 import android.app.AlertDialog.Builder;
 
 public class MainActivity extends AppCompatActivity {
-    String msg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,74 +25,65 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void enviar(View view) {
-        EditText nome = (EditText) findViewById(R.id.editTextNome);
-        EditText idade = (EditText) findViewById(R.id.editTextIdade);
         EditText url = (EditText) findViewById(R.id.editTextURL);
-        EditText telefone = (EditText) findViewById(R.id.editTextTelefone);
+        EditText nome = (EditText) findViewById(R.id.editTextNome);
         EditText cpf = (EditText) findViewById(R.id.editTextCPF);
         EditText email = (EditText) findViewById(R.id.editTextEmail);
-        RadioGroup rg = (RadioGroup) findViewById(R.id.generoOpcoes);
+        EditText senha = (EditText) findViewById(R.id.editTextSenha);
+        EditText idade = (EditText) findViewById(R.id.editTextIdade);
+        EditText telefone = (EditText) findViewById(R.id.editTextTelefone);
+        RadioGroup rg = (RadioGroup) findViewById(R.id.sexoOpcoes);
         int op = rg.getCheckedRadioButtonId();
+        CheckBox ler = (CheckBox) findViewById(R.id.checkBoxLer);
+        CheckBox filmesSeries = (CheckBox) findViewById(R.id.checkBoxFilmesSeries);
+        CheckBox viajar = (CheckBox) findViewById(R.id.checkBoxViajar);
+        CheckBox dormir = (CheckBox) findViewById(R.id.checkBoxDormir);
+        CheckBox comer = (CheckBox) findViewById(R.id.checkBoxComer);
+        CheckBox outros = (CheckBox) findViewById(R.id.checkBoxOutros);
 
-// verificação de campos vazios
-        if ((nome.getText().length() == 0) && (cpf.getText().length() == 0) && (email.getText().length() == 0) && (idade.getText().length() == 0)) {
+        if (nome.length() == 0 && cpf.length() == 0 && senha.length() == 0 && idade.length() == 0 && email.length() == 0 && telefone.length() == 0) {
             Toast.makeText(getApplicationContext(), "Todos os campos estão vazios", Toast.LENGTH_SHORT).show();
             vibrar();
+        } else {
+            if (nome.length() == 0){
+                nome.setError("Campo vazio");
+            }
+            if (cpf.length() == 0){
+                cpf.setError("Campo vazio");
+            }
+            else if (cpf.length() < 14){
+                cpf.setError("Campo inválido");
+            }
+            if (email.length() == 0){
+                email.setError("Campo vazio");
+            }
+            if (idade.length() == 0){
+                idade.setError("Campo vazio");
+            }
+            if (telefone.length() == 0){
+                telefone.setError("Campo vazio");
+            }
+            if (senha.length() == 0){
+                senha.setError("Campo vazio");
+            }
+            else if (senha.length() < 6){
+                senha.setError("Campo inválido");
+            }
+            if (url.length() == 0){
+                url.setError("Campo vazio");
+            }
+            if((op == R.id.radioButFeminino || op == R.id.radioButMasculino) && nome.length() > 0 && cpf.length() == 14 && email.length() > 0 && senha.length() >= 6
+                    && (ler.isChecked() || filmesSeries.isChecked() || viajar.isChecked() || dormir.isChecked() || comer.isChecked() || outros.isChecked()) && url.length() > 0){
+                Intent intent = new Intent(this, SegundaActivity.class);
+                startActivity(intent);
+            }
         }
-// verificação de campo nome
-        if (nome.getText().length() == 0) {
-            nome.setError("Campo vazio");
-        } else if (nome.getText().length() < 5) {
-            nome.setError("Minimo 5 letras");
-
-        }
-// verificação de campo email
-        if (email.getText().length() == 0) {
-            email.setError("Campo vazio");
-        } else if (email.getText().length() < 8) {
-            email.setError("Minimo 8 digitos");
-        }
-//verificação de campo cpf
-        if (cpf.getText().length() == 0) {
-            cpf.setError("Campo vazio");
-        } else if (cpf.getText().length() < 11) {
-            cpf.setError("Minimo 11 digitos");
-
-        }
-//verificação de campo idade
-        if (idade.getText().length() == 0) {
-            idade.setError("Campo vazio");
-        }
-//verificação de campo telefone
-        if (telefone.getText().length() == 0) {
-            telefone.setError("Campo vazio");
-        }
-//verificação de campo url
-        if (url.getText().length() == 0) {
-            url.setError("Campo vazio");
-        }
-
-
     }
 
-    //verificação de idade
-
-    // String idadeString = idade.toString();
-    // int idadeInt=Integer.parseInt(idadeString);
-
-
-   /* if (idade == 0)    {
-        idade.setError("Idade não aceita");
+    public void vibrar() {
+        Vibrator rr = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        long milissegundos = 100;
+        rr.vibrate(milissegundos);
     }
-    */
-
-// Vibrar
-          public void vibrar() {
-              Vibrator rr = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-              long milissegundos = 100;
-              rr.vibrate(milissegundos);
-          }
-
-
 }
 

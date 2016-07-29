@@ -1,106 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical">
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editTextNome"
-        android:inputType="text"
-        android:digits=" "
-        android:hint="Nome completo"
-        android:layout_below="@+id/generoOpcoes"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="44dp" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editTextEmail"
-        android:inputType="textEmailAddress"
-        android:hint="Digite seu email"
-        android:layout_below="@+id/radioButMasculino"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editTextCPF"
-        android:inputType="number"
-        android:hint="CPF"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/editTextNome" />
-
-    <RadioGroup
-        android:id="@+id/generoOpcoes"
+    <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"></RadioGroup>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Enviar"
-        android:id="@+id/enviar"
-        android:onClick="enviar"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
-
-    <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Masculino"
-        android:id="@+id/radioButMasculino"
-        android:layout_marginEnd="47dp"
-        android:layout_alignTop="@+id/radioButFeminino"
-        android:layout_alignParentEnd="true" />
-
-    <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Feminino"
-        android:id="@+id/radioButFeminino"
-        android:checked="false"
-        android:layout_below="@+id/editTextCPF"
-        android:layout_toStartOf="@+id/radioButMasculino" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Gênero:"
-        android:id="@+id/textViewGenero"
-        android:layout_below="@+id/editTextCPF"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/radioButFeminino" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editTextURL"
-        android:layout_below="@+id/editTextEmail"
-        android:layout_alignParentStart="true"
-        android:hint="Link de site preferido" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="numberSigned"
-        android:ems="10"
-        android:id="@+id/editTextTelefone"
-        android:hint="Telefone"
-        android:layout_below="@+id/editTextURL"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="numberSigned"
-        android:ems="10"
-        android:id="@+id/editTextIdade"
-        android:layout_below="@+id/editTextTelefone"
-        android:layout_alignParentStart="true"
-        android:hint="Idade" />
-
-</RelativeLayout>
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nome:" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextNome"
+            android:inputType="text"
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzç "
+            android:hint="Nome Completo, Sem Acentos"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Idade:"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextIdade"
+            android:inputType="number"
+            android:hint="Digite Sua Idade"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sexo:"/>
+        <RadioGroup
+            android:id="@+id/sexoOpcoes"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Feminino"
+                android:id="@+id/radioButFeminino"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Masculino"
+                android:id="@+id/radioButMasculino"/>
+        </RadioGroup>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email:"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextEmail"
+            android:inputType="textEmailAddress"
+            android:hint="Digite Seu Email"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CPF:"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextCPF"
+            android:digits="0123456789-."
+            android:hint="Digite Seu CPF"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Telefone:"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextTelefone"
+            android:inputType="phone"
+            android:hint="Digite Seu Telefone"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Senha:"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextSenha"
+            android:inputType="textPassword"
+            android:hint="Mínimo de 6 Dígitos"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hobbies:"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBoxLer"
+            android:text="Ler"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBoxFilmesSeries"
+            android:text="Ver Filmes e Séries"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBoxViajar"
+            android:text="Viajar"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBoxDormir"
+            android:text="Dormir"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBoxComer"
+            android:text="Comer"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBoxOutros"
+            android:text="Outros"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Site Favorito"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextURL"
+            android:layout_below="@+id/editTextEmail"
+            android:hint="Link de site preferido" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enviar"
+            android:id="@+id/enviar"
+            android:onClick="enviar"/>
+    </LinearLayout>
+</ScrollView>
