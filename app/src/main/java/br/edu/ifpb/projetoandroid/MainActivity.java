@@ -41,35 +41,35 @@ public class MainActivity extends AppCompatActivity {
         CheckBox comer = (CheckBox) findViewById(R.id.checkBoxComer);
         CheckBox outros = (CheckBox) findViewById(R.id.checkBoxOutros);
 
-        if (nome.length() == 0 && cpf.length() == 0 && senha.length() == 0 && idade.length() == 0 && email.length() == 0 && telefone.length() == 0) {
+        if (nome.toString().trim().length() == 0 && cpf.toString().trim().length() == 0 && senha.toString().trim().length() == 0 && idade.toString().trim().length() == 0 && email.toString().trim().length() == 0 && telefone.toString().trim().length() == 0) {
             Toast.makeText(getApplicationContext(), "Todos os campos estão vazios", Toast.LENGTH_SHORT).show();
             vibrar();
         } else {
-            if (nome.length() == 0){
+            if (nome.toString().trim().length() == 0){
                 nome.setError("Campo vazio");
             }
-            if (cpf.length() == 0){
+            if (cpf.toString().trim().length() == 0){
                 cpf.setError("Campo vazio");
             }
             else if (cpf.length() < 14){
                 cpf.setError("Campo inválido");
             }
-            if (email.length() == 0){
+            if (email.toString().trim().length() == 0){
                 email.setError("Campo vazio");
             }
-            if (idade.length() == 0){
+            if (idade.toString().trim().length() == 0){
                 idade.setError("Campo vazio");
             }
-            if (telefone.length() == 0){
+            if (telefone.toString().trim().length() == 0){
                 telefone.setError("Campo vazio");
             }
-            if (senha.length() == 0){
+            if (senha.toString().trim().length() == 0){
                 senha.setError("Campo vazio");
             }
             else if (senha.length() < 6){
                 senha.setError("Campo inválido");
             }
-            if (url.length() == 0){
+            if (url.toString().trim().length() == 0){
                 url.setError("Campo vazio");
             }
             if((op == R.id.radioButFeminino || op == R.id.radioButMasculino) && nome.length() > 0 && cpf.length() == 14 && email.length() > 0 && senha.length() >= 6
