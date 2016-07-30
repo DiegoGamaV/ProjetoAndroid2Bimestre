@@ -16,6 +16,12 @@ import android.view.*;
 import android.app.*;
 import android.app.AlertDialog.Builder;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import br.edu.ifpb.projetoandroid.br.edu.ifpb.projetoandroid.util.ValidadorEmail;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -29,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         EditText nome = (EditText) findViewById(R.id.editTextNome);
         EditText cpf = (EditText) findViewById(R.id.editTextCPF);
         EditText email = (EditText) findViewById(R.id.editTextEmail);
+        String emailValidar= email.getText().toString();
         EditText senha = (EditText) findViewById(R.id.editTextSenha);
         EditText idade = (EditText) findViewById(R.id.editTextIdade);
         EditText telefone = (EditText) findViewById(R.id.editTextTelefone);
@@ -40,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         CheckBox dormir = (CheckBox) findViewById(R.id.checkBoxDormir);
         CheckBox comer = (CheckBox) findViewById(R.id.checkBoxComer);
         CheckBox outros = (CheckBox) findViewById(R.id.checkBoxOutros);
+        ValidadorEmail ValidarEmail = new ValidadorEmail();
 
         if (nome.toString().trim().length() == 0 && cpf.toString().trim().length() == 0 && senha.toString().trim().length() == 0 && idade.toString().trim().length() == 0 && email.toString().trim().length() == 0 && telefone.toString().trim().length() == 0) {
             Toast.makeText(getApplicationContext(), "Todos os campos estão vazios", Toast.LENGTH_SHORT).show();
@@ -74,9 +82,27 @@ public class MainActivity extends AppCompatActivity {
             }
             if((op == R.id.radioButFeminino || op == R.id.radioButMasculino) && nome.length() > 0 && cpf.length() == 14 && email.length() > 0 && senha.length() >= 6
                     && (ler.isChecked() || filmesSeries.isChecked() || viajar.isChecked() || dormir.isChecked() || comer.isChecked() || outros.isChecked()) && url.length() > 0){
-                Intent intent = new Intent(this, SegundaActivity.class);
-                startActivity(intent);
+                if(ValidarEmail.isValidEmail(emailValidar)==true ) {
+                    Intent intent = new Intent(this, SegundaActivity.class);
+                    startActivity(intent);
+                }else{
+                    email.setError("Link invalido");
+                }
             }
+//TENTATIVA DE VALIDAR URL
+          /*  String url2 = url.getText().toString();
+            try {
+                new URL(url.getText().toString()).openStream().close();
+                //  URL url = new URL(url1.getText().toString());
+                //URLConnection conn = url.openConnection();
+                // conn.connect();
+            } catch (MalformedURLException e) {
+                url.setError("Link invalido");
+            } catch (IOException e) {
+                // the connection couldn't be established
+                url.setError("Link invalido");
+            }
+*/
         }
     }
 
