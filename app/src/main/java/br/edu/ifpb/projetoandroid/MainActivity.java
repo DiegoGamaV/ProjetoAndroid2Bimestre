@@ -21,6 +21,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import br.edu.ifpb.projetoandroid.br.edu.ifpb.projetoandroid.util.ValidadorEmail;
+import br.edu.ifpb.projetoandroid.br.edu.ifpb.projetoandroid.util.ValidadorTelefone;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         EditText senha = (EditText) findViewById(R.id.editTextSenha);
         EditText idade = (EditText) findViewById(R.id.editTextIdade);
         EditText telefone = (EditText) findViewById(R.id.editTextTelefone);
+        String telefoneValidar = telefone.getText().toString();
         RadioGroup rg = (RadioGroup) findViewById(R.id.sexoOpcoes);
         int op = rg.getCheckedRadioButtonId();
         CheckBox ler = (CheckBox) findViewById(R.id.checkBoxLer);
@@ -48,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         CheckBox comer = (CheckBox) findViewById(R.id.checkBoxComer);
         CheckBox outros = (CheckBox) findViewById(R.id.checkBoxOutros);
         ValidadorEmail ValidarEmail = new ValidadorEmail();
-
+        ValidadorTelefone ValidarTelefone = new ValidadorTelefone();
         if (nome.toString().trim().length() == 0 && cpf.toString().trim().length() == 0 && senha.toString().trim().length() == 0 && idade.toString().trim().length() == 0 && email.toString().trim().length() == 0 && telefone.toString().trim().length() == 0) {
             Toast.makeText(getApplicationContext(), "Todos os campos estão vazios", Toast.LENGTH_SHORT).show();
             vibrar();
@@ -82,11 +84,13 @@ public class MainActivity extends AppCompatActivity {
             }
             if((op == R.id.radioButFeminino || op == R.id.radioButMasculino) && nome.length() > 0 && cpf.length() == 14 && email.length() > 0 && senha.length() >= 6
                     && (ler.isChecked() || filmesSeries.isChecked() || viajar.isChecked() || dormir.isChecked() || comer.isChecked() || outros.isChecked()) && url.length() > 0){
-                if(ValidarEmail.isValidEmail(emailValidar)==true ) {
+                if((ValidarEmail.isValidEmail(emailValidar)==true)&& (ValidarTelefone.TelefoneValido(telefoneValidar)==true)) {
                     Intent intent = new Intent(this, SegundaActivity.class);
                     startActivity(intent);
-                }else{
-                    email.setError("Link invalido");
+                }else if(ValidarEmail.isValidEmail(emailValidar)==false){
+                    email.setError("Email Invalido");
+                }else if (ValidarTelefone.TelefoneValido(telefoneValidar)==false){
+                    telefone.setError("Formato de telefone Invalido");
                 }
             }
 //TENTATIVA DE VALIDAR URL
