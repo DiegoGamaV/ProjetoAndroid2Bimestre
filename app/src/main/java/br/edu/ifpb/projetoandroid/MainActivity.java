@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
+import android.webkit.URLUtil;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -20,6 +22,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import br.edu.ifpb.projetoandroid.br.edu.ifpb.projetoandroid.util.Validador;
 import br.edu.ifpb.projetoandroid.br.edu.ifpb.projetoandroid.util.ValidadorEmail;
 import br.edu.ifpb.projetoandroid.br.edu.ifpb.projetoandroid.util.ValidadorTelefone;
 
@@ -49,50 +52,67 @@ public class MainActivity extends AppCompatActivity {
         CheckBox dormir = (CheckBox) findViewById(R.id.checkBoxDormir);
         CheckBox comer = (CheckBox) findViewById(R.id.checkBoxComer);
         CheckBox outros = (CheckBox) findViewById(R.id.checkBoxOutros);
-        ValidadorEmail ValidarEmail = new ValidadorEmail();
-        ValidadorTelefone ValidarTelefone = new ValidadorTelefone();
-        if (nome.toString().trim().length() == 0 && cpf.toString().trim().length() == 0 && senha.toString().trim().length() == 0 && idade.toString().trim().length() == 0 && email.toString().trim().length() == 0 && telefone.toString().trim().length() == 0) {
+        ValidadorEmail validarEmail = new ValidadorEmail();
+        ValidadorTelefone validarTelefone = new ValidadorTelefone();
+        Validador validador = new Validador();
+        String cpfValidar = cpf.getText().toString();
+        if (nome.length() == 0 && cpf.length() == 0 && senha.length() == 0 && idade.length() == 0 && email.length() == 0 && telefone.length() == 0) {
             Toast.makeText(getApplicationContext(), "Todos os campos estão vazios", Toast.LENGTH_SHORT).show();
             vibrar();
         } else {
-            if (nome.toString().trim().length() == 0){
+            if (nome.length() == 0){
                 nome.setError("Campo vazio");
             }
-            if (cpf.toString().trim().length() == 0){
+            if (cpf.length() == 0){
                 cpf.setError("Campo vazio");
             }
-            else if (cpf.length() < 14){
-                cpf.setError("Campo inválido");
+            else if(!(cpf.length() == 14 && validador.validarCPF(cpfValidar))){
+                cpf.setError("CPF inválido");
             }
-            if (email.toString().trim().length() == 0){
-                email.setError("Campo vazio");
+            else if(!(validarEmail.isValidEmail(emailValidar))){
+                email.setError("Email Invalido");
             }
-            if (idade.toString().trim().length() == 0){
+            if (idade.length() == 0){
                 idade.setError("Campo vazio");
             }
-            if (telefone.toString().trim().length() == 0){
+            if (telefone.length() == 0){
                 telefone.setError("Campo vazio");
             }
-            if (senha.toString().trim().length() == 0){
+            /*else if (!(validarTelefone.TelefoneValido(telefoneValidar))){
+                telefone.setError("Telefone inválido");
+            }*/
+            if (senha.length() == 0){
                 senha.setError("Campo vazio");
             }
             else if (senha.length() < 6){
-                senha.setError("Campo inválido");
+                senha.setError("Senha inválida");
             }
-            if (url.toString().trim().length() == 0){
+            if (url.length() == 0){
                 url.setError("Campo vazio");
             }
+            /*else if(!(Patterns.WEB_URL.matcher(url.toString()).matches())){
+                url.setError("URL inválida");
+            }*/
             if((op == R.id.radioButFeminino || op == R.id.radioButMasculino) && nome.length() > 0 && cpf.length() == 14 && email.length() > 0 && senha.length() >= 6
                     && (ler.isChecked() || filmesSeries.isChecked() || viajar.isChecked() || dormir.isChecked() || comer.isChecked() || outros.isChecked()) && url.length() > 0){
-                if((ValidarEmail.isValidEmail(emailValidar)==true)&& (ValidarTelefone.TelefoneValido(telefoneValidar)==true)) {
-                    Intent intent = new Intent(this, SegundaActivity.class);
-                    startActivity(intent);
-                }else if(ValidarEmail.isValidEmail(emailValidar)==false){
-                    email.setError("Email Invalido");
-                }else if (ValidarTelefone.TelefoneValido(telefoneValidar)==false){
-                    telefone.setError("Formato de telefone Invalido");
+                if (validarEmail.isValidEmail(emailValidar) && validador.validarCPF(cpfValidar)) {/* && validarTelefone.TelefoneValido(telefoneValidar)*/
+                        Intent intent = new Intent(this, SegundaActivity.class);
+                        startActivity(intent);
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "Dados Inválidos", Toast.LENGTH_SHORT).show();
                 }
             }
+        }
+    }
+
+    public void vibrar() {
+        Vibrator rr = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        long milissegundos = 100;
+        rr.vibrate(milissegundos);
+    }
+}
+
 //TENTATIVA DE VALIDAR URL
           /*  String url2 = url.getText().toString();
             try {
@@ -107,13 +127,3 @@ public class MainActivity extends AppCompatActivity {
                 url.setError("Link invalido");
             }
 */
-        }
-    }
-
-    public void vibrar() {
-        Vibrator rr = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        long milissegundos = 100;
-        rr.vibrate(milissegundos);
-    }
-}
-
