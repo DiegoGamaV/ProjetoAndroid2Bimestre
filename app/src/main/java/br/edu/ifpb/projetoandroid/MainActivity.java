@@ -78,9 +78,9 @@ public class MainActivity extends AppCompatActivity {
             if (telefone.length() == 0){
                 telefone.setError("Campo vazio");
             }
-            /*else if (!(validarTelefone.TelefoneValido(telefoneValidar))){
+            else if (!(validarTelefone.TelefoneValido(telefoneValidar))){
                 telefone.setError("Telefone inválido");
-            }*/
+            }
             if (senha.length() == 0){
                 senha.setError("Campo vazio");
             }

@@ -75,8 +75,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/editTextTelefone"
-            android:inputType="phone"
-            android:hint="Digite Seu Telefone - (XX) XXXXX-XXXX"/>
+            android:hint="Digite Seu Telefone - (XX) XXXXX-XXXX"
+            android:inputType="text"
+            android:digits="() - 1234567890"
+            android:clickable="false" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
