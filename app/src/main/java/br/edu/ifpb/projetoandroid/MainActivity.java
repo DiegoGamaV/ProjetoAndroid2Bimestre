@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.View;
-import android.webkit.URLUtil;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -21,10 +19,12 @@ import android.app.AlertDialog.Builder;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
 
-import br.edu.ifpb.projetoandroid.br.edu.ifpb.projetoandroid.util.Validador;
+import br.edu.ifpb.projetoandroid.br.edu.ifpb.projetoandroid.util.ValidadorCPF;
 import br.edu.ifpb.projetoandroid.br.edu.ifpb.projetoandroid.util.ValidadorEmail;
 import br.edu.ifpb.projetoandroid.br.edu.ifpb.projetoandroid.util.ValidadorTelefone;
+import br.edu.ifpb.projetoandroid.br.edu.ifpb.projetoandroid.util.ValidadorURL;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -54,9 +54,11 @@ public class MainActivity extends AppCompatActivity {
         CheckBox outros = (CheckBox) findViewById(R.id.checkBoxOutros);
         ValidadorEmail validarEmail = new ValidadorEmail();
         ValidadorTelefone validarTelefone = new ValidadorTelefone();
-        Validador validador = new Validador();
+        ValidadorCPF validarCPF = new ValidadorCPF();
         String cpfValidar = cpf.getText().toString();
-        if (nome.length() == 0 && cpf.length() == 0 && senha.length() == 0 && idade.length() == 0 && email.length() == 0 && telefone.length() == 0) {
+        String urlValidar = url.getText().toString();
+        ValidadorURL validadorURL = new ValidadorURL();
+        if (nome.length() == 0 && cpf.length() == 0 && senha.length() == 0 && idade.length() == 0 && email.length() == 0 && telefone.length() == 0 && url.length() == 0) {
             Toast.makeText(getApplicationContext(), "Todos os campos estão vazios", Toast.LENGTH_SHORT).show();
             vibrar();
         } else {
@@ -66,11 +68,11 @@ public class MainActivity extends AppCompatActivity {
             if (cpf.length() == 0){
                 cpf.setError("Campo vazio");
             }
-            else if(!(cpf.length() == 14 && validador.validarCPF(cpfValidar))){
-                cpf.setError("CPF inválido");
+            else if(!(validarCPF.validadorCPF(cpfValidar))){
+                cpf.setError("Campo inválido");
             }
             else if(!(validarEmail.isValidEmail(emailValidar))){
-                email.setError("Email Invalido");
+                email.setError("Email Inválido");
             }
             if (idade.length() == 0){
                 idade.setError("Campo vazio");
@@ -90,14 +92,15 @@ public class MainActivity extends AppCompatActivity {
             if (url.length() == 0){
                 url.setError("Campo vazio");
             }
-            /*else if(!(Patterns.WEB_URL.matcher(url.toString()).matches())){
-                url.setError("URL inválida");
-            }*/
-            if((op == R.id.radioButFeminino || op == R.id.radioButMasculino) && nome.length() > 0 && cpf.length() == 14 && email.length() > 0 && senha.length() >= 6
+            else if(!(validadorURL.isValidURL(urlValidar))){
+                url.setError("Campo inválido");
+            }
+            if((op == R.id.radioButFeminino || op == R.id.radioButMasculino) && nome.length() > 0 && cpf.length() == 11 && email.length() > 0 && senha.length() >= 6
                     && (ler.isChecked() || filmesSeries.isChecked() || viajar.isChecked() || dormir.isChecked() || comer.isChecked() || outros.isChecked()) && url.length() > 0){
-                if (validarEmail.isValidEmail(emailValidar) && validador.validarCPF(cpfValidar)) {/* && validarTelefone.TelefoneValido(telefoneValidar)*/
-                        Intent intent = new Intent(this, SegundaActivity.class);
-                        startActivity(intent);
+                if (validarEmail.isValidEmail(emailValidar) && validarCPF.validadorCPF(cpfValidar)
+                        && validarTelefone.TelefoneValido(telefoneValidar) && validadorURL.isValidURL(urlValidar)){
+                    Intent intent = new Intent(this, SegundaActivity.class);
+                    startActivity(intent);
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "Dados Inválidos", Toast.LENGTH_SHORT).show();
@@ -112,18 +115,3 @@ public class MainActivity extends AppCompatActivity {
         rr.vibrate(milissegundos);
     }
 }
-
-//TENTATIVA DE VALIDAR URL
-          /*  String url2 = url.getText().toString();
-            try {
-                new URL(url.getText().toString()).openStream().close();
-                //  URL url = new URL(url1.getText().toString());
-                //URLConnection conn = url.openConnection();
-                // conn.connect();
-            } catch (MalformedURLException e) {
-                url.setError("Link invalido");
-            } catch (IOException e) {
-                // the connection couldn't be established
-                url.setError("Link invalido");
-            }
-*/
