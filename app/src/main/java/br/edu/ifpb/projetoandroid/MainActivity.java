@@ -58,7 +58,8 @@ public class MainActivity extends AppCompatActivity {
         String cpfValidar = cpf.getText().toString();
         String urlValidar = url.getText().toString();
         ValidadorURL validadorURL = new ValidadorURL();
-        if (nome.length() == 0 && cpf.length() == 0 && senha.length() == 0 && idade.length() == 0 && email.length() == 0 && telefone.length() == 0 && url.length() == 0) {
+        if (nome.length() == 0 && cpf.length() == 0 && senha.length() == 0 && idade.length() == 0 && email.length() == 0 && telefone.length() == 0 && url.length() == 0
+                &&(!((op == R.id.radioButFeminino || op == R.id.radioButMasculino) && (ler.isChecked() || filmesSeries.isChecked() || viajar.isChecked()|| dormir.isChecked() || comer.isChecked() || outros.isChecked())))) {
             Toast.makeText(getApplicationContext(), "Todos os campos estão vazios", Toast.LENGTH_SHORT).show();
             vibrar();
         } else {
@@ -94,6 +95,9 @@ public class MainActivity extends AppCompatActivity {
             }
             else if(!(validadorURL.isValidURL(urlValidar))){
                 url.setError("Campo inválido");
+            }
+            if(!((op == R.id.radioButFeminino || op == R.id.radioButMasculino) && (ler.isChecked() || filmesSeries.isChecked() || viajar.isChecked() || dormir.isChecked() || comer.isChecked() || outros.isChecked()))){
+                Toast.makeText(getApplicationContext(), "Preencha os campos vazios!", Toast.LENGTH_SHORT).show();
             }
             if((op == R.id.radioButFeminino || op == R.id.radioButMasculino) && nome.length() > 0 && cpf.length() == 11 && email.length() > 0 && senha.length() >= 6
                     && (ler.isChecked() || filmesSeries.isChecked() || viajar.isChecked() || dormir.isChecked() || comer.isChecked() || outros.isChecked()) && url.length() > 0){
